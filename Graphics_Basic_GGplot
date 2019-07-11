@@ -1,0 +1,30 @@
+#####BASIC CODE FOR LAYOUT OF A GGPLOT BARPLOT
+##font
+##background
+##colours
+##legend control
+##labels
+
+p <- ggplot(data=DensityMean,aes(x=Target_ReferenceEcosystem,y=Density,fill=plotType))
+p1 <- p + geom_bar(position = pd,stat="identity",width=0.5,color="black")
+p1
+p2 <- p1 + geom_errorbar(aes(ymin=Density,ymax=Density+ci,width=0.3),position=pd) + xlab("Vegetation Type") + ylab(expression(Plant~Density~m^{-2}))
+p2 #theme_bw() + 
+p4 <- p2 + theme(axis.text.x=element_text(size=14,angle=330,vjust=1,hjust=0),
+                 axis.title.x=element_text(size=18),
+                 axis.title.y=element_text(size=20),
+                 axis.text.y=element_text(size=16),
+                 strip.text.x=element_text(size=18))+
+  theme(panel.grid.minor=element_blank(),
+        panel.grid.major=element_blank())
+p4
+p5 <- p4 + scale_fill_manual(name="Plot Type",values=c("Corridor"="#f1a340","Reference"="#3182bd")) +
+    scale_x_discrete(limits=c("Banksia-coastal blackbutt woodland" ,"Banksia-jarrah woodland","Banksia-tuart woodland","Banksia-woodypear woodland", "Banksia woodland",
+                              "Holly-leaved banksia woodland","Wet forest and woodland"),
+                      labels=c("Banksia-blackbutt","Banksia-jarrah","Banksia-tuart","Banksia-woodypear","Banksia","Holly-leaved Banksia","Wet forest")) +
+  theme(legend.title = element_text(size=16), 
+        legend.text=element_text(size=14))
+p5
+p6 <- p5 + facet_grid(.~visYr) +ggtitle("Goal 9.1 Density")
+p6
+ggsave(p6,filename="Goal9.1_DensityPerSubplot_bars.pdf")
