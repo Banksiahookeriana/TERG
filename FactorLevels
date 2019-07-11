@@ -1,0 +1,9 @@
+##I always forget how to change factor levels!
+##TWO options
+
+##call the factor variable and specify 
+FruitSet$TrtmtA <- factor(FruitSet$TrtmtA,levels=c("Control","BirdBee","Bird","Auto"))
+
+##similar w different function
+ByPeriod1$Sex <- ordered(ByPeriod1$Sex,levels=c("Male","Female","Unknown")) #code from CatStop script
+
