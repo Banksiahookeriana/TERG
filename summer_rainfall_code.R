@@ -1,4 +1,6 @@
 
+#let me find a way to upload the picture to go along with this.
+
 #mapping with rasters in R
 #this creates a mean summmer rainfall map of the last 60 years of data, ontop of that I overlay the australian coastline
 #and the number of Phytophthora dections I found at my sites
